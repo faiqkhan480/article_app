@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sy_expedition/main_page.dart';
-import 'package:sy_expedition/styles.dart';
+
+import 'wrapper.dart';
+import 'styles.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: mainBlack,
       ),
-      home: MainPage(),
+      home: const Wrapper(),
     );
   }
 }

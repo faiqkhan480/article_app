@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../main_page.dart';
+import '../components/map_hider.dart';
+import '../components/vulture_circle.dart';
 
 class VulturePage extends StatelessWidget {
   const VulturePage({super.key});

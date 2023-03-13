@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sy_expedition/my_app.dart';
+import 'package:sy_expedition/app.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
