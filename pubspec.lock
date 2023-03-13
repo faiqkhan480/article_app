@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  equatable:
+    dependency: "direct main"
+    description:
+      name: equatable
+      sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -70,6 +78,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_riverpod:
+    dependency: "direct main"
+    description:
+      name: flutter_riverpod
+      sha256: "3ea325c2de7ef2589023413c489875467730b2c1d822759efedd3e0e28a906c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -140,13 +156,13 @@ packages:
     source: hosted
     version: "6.0.5"
   riverpod:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: riverpod
-      sha256: "899cd0999b2f3b798349d9b5639cfea81d406c011bd914097145ff92e91b29f9"
+      sha256: "7da5a0febdb7fd0e4340f7b7023cb8f17cf7acd405b1e67a0e98bf574085bfa5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "2.3.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -218,4 +234,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.18.2 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=3.0.0"

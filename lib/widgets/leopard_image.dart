@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../components/map_hider.dart';
-import '../controller/map_animation_notifier.dart';
 import '../controller/page_offset_notifier.dart';
 
 
