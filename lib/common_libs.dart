@@ -1,5 +1,4 @@
 export 'package:flutter/material.dart';
-export 'package:provider/provider.dart';
 
 export 'components/arrow_icon.dart';
 export 'components/base_camp_label.dart';

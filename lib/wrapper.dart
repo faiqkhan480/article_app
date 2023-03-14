@@ -16,19 +16,18 @@ class MainPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(pProvider);
+    final page = ref.watch(pageProvider);
     mediaPadding = MediaQuery.of(context).padding;
     return Scaffold(
       body: Consumer(
           builder: (context, ref, child) {
-            final page = ref.watch(pProvider);
+            final page = ref.watch(pageProvider);
             return PageView(
               controller: page.pageController,
               physics: const ClampingScrollPhysics(),
-              children: <Widget>[
+              children: const <Widget>[
                 LeopardPage(),
-                Container(color: Colors.green),
-                // VulturePage(),
+                VulturePage(),
               ],
             );
           }

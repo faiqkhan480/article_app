@@ -12,7 +12,7 @@ class LeopardPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(pProvider);
+    final state = ref.watch(pageProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -71,7 +71,7 @@ class The72Text extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final offset = ref.watch(pProvider).offset;
+    final offset = ref.watch(pageProvider).offset;
     return Transform.translate(
         offset: Offset(-40 - 0.5 * offset, 0),
         child: RotatedBox(
@@ -120,7 +120,7 @@ class TravelDescriptionLabel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(pProvider).page;
+    final page = ref.watch(pageProvider).page;
     return Opacity(
       opacity: math.max(0, 1 - 4 * page),
       child: const Padding(
@@ -154,7 +154,7 @@ class LeopardDescription extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(pProvider).page;
+    final page = ref.watch(pageProvider).page;
     return Opacity(
       opacity: math.max(0, 1 - 4 * page),
       child: const Padding(
