@@ -1,9 +1,10 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/page_offset_notifier.dart';
+import '../controller/map_controller.dart';
+import '../controller/page_controller.dart';
 import '../utils/helper.dart';
 import 'map_hider.dart';
 
@@ -12,14 +13,17 @@ class TravelDetailsLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<PageOffsetNotifier, AnimationController>(
-      builder: (context, notifier, animation, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
+        final pageState = ref.watch(pageProvider);
+        final animation = ref.watch(mapAnimationProvider);
+
         return Positioned(
           top: topMargin(context) +
               (1 - animation.value) * (mainSquareSize(context) + 32 - 4),
-          left: 24 + MediaQuery.of(context).size.width - notifier.offset,
+          left: 24 + MediaQuery.of(context).size.width - pageState.offset,
           child: Opacity(
-            opacity: math.max(0, 4 * notifier.page - 3),
+            opacity: math.max(0, 4 * pageState.page - 3),
             child: child,
           ),
         );

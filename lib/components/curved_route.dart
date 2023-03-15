@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/map_animation_notifier.dart';
+import '../controller/map_controller.dart';
 import '../styles.dart';
 import '../utils/helper.dart';
 import '../widgets/curve_painter.dart';
@@ -11,8 +11,10 @@ class CurvedRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MapAnimationNotifier>(
-      builder: (context, animation, child) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final animation = ref.watch(mapAnimationProvider);
+
         if (animation.value == 0) {
           return Container();
         }

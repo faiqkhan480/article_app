@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/map_animation_notifier.dart';
+
+import '../controller/map_controller.dart';
 import '../utils/helper.dart';
 import 'small_animal_icon_label.dart';
 
@@ -10,8 +12,11 @@ class LeopardIconLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<AnimationController, MapAnimationNotifier>(
-      builder: (context, animation, notifier, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
+        final animation = ref.watch(mapAnimationProvider);
+        final notifier = useAnimationController(duration: const Duration(milliseconds: 1000));
+
         double opacity;
         if (animation.value < 3 / 4) {
           opacity = 0;

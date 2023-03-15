@@ -1,11 +1,8 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/map_animation_notifier.dart';
-import '../controller/page_offset_notifier.dart';
-import '../utils/helper.dart';
+import '../controller/map_controller.dart';
+import '../controller/page_controller.dart';
 import 'map_hider.dart';
 
 class VultureImage extends StatelessWidget {
@@ -13,11 +10,14 @@ class VultureImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<PageOffsetNotifier, AnimationController>(
-      builder: (context, notifier, animation, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
+        final pageState = ref.watch(pageProvider);
+        final animation = ref.watch(mapAnimationProvider);
+
         return Positioned(
           left:
-          1.2 * MediaQuery.of(context).size.width - 0.85 * notifier.offset,
+          1.2 * MediaQuery.of(context).size.width - 0.85 * pageState.offset,
           child: Transform.scale(
             scale: 1 - 0.1 * animation.value,
             child: Opacity(

@@ -1,20 +1,23 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/page_offset_notifier.dart';
+import '../controller/map_controller.dart';
+import '../controller/page_controller.dart';
 import '../styles.dart';
 import '../utils/helper.dart';
-import 'map_hider.dart';
 
 class HorizontalTravelDots extends StatelessWidget {
   const HorizontalTravelDots({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<PageOffsetNotifier, AnimationController>(
-      builder: (context, notifier, animation, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
+        final notifier = ref.watch(pageProvider);
+        final animation = ref.watch(mapAnimationProvider);
+
         if (animation.value == 1) {
           return Container();
         }

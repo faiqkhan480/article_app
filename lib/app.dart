@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: mainBlack,
       ),
-      home: const Wrapper(),
+      home: const MainPage(),
     );
   }
 }

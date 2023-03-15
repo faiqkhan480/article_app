@@ -1,9 +1,7 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../controller/page_offset_notifier.dart';
+import '../controller/page_controller.dart';
 import '../styles.dart';
 import 'map_hider.dart';
 
@@ -13,8 +11,9 @@ class PageIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MapHider(
-      child: Consumer<PageOffsetNotifier>(
-        builder: (context, notifier, _) {
+      child: Consumer(
+        builder: (context, ref, child) {
+          final pageState = ref.watch(pageProvider);
           return Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -25,7 +24,7 @@ class PageIndicator extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: notifier.page.round() == 0 ? white : lightGrey,
+                      color: pageState.page.round() == 0 ? white : lightGrey,
                     ),
                     height: 6,
                     width: 6,
@@ -34,7 +33,7 @@ class PageIndicator extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: notifier.page.round() != 0 ? white : lightGrey,
+                      color: pageState.page.round() != 0 ? white : lightGrey,
                     ),
                     height: 6,
                     width: 6,

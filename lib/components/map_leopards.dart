@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/map_animation_notifier.dart';
+import '../controller/map_controller.dart';
 import '../utils/helper.dart';
 import 'small_animal_icon_label.dart';
 
@@ -12,9 +12,11 @@ class MapLeopards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MapAnimationNotifier>(
-      builder: (context, notifier, child) {
-        double opacity = math.max(0, 4 * (notifier.value - 3 / 4));
+    return Consumer(
+      builder: (context, ref, child) {
+        final animation = ref.watch(mapAnimationProvider);
+
+        double opacity = math.max(0, 4 * (animation.value - 3 / 4));
         return Positioned(
           top: topMargin(context) + 32 + 16 + 4 + oneThird(context),
           child: Opacity(

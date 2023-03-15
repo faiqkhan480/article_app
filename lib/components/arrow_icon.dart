@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../controller/map_controller.dart';
 import '../styles.dart';
 import '../utils/helper.dart';
 import 'map_hider.dart';
@@ -10,8 +11,10 @@ class ArrowIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AnimationController>(
-      builder: (context, animation, Widget? child) {
+    return HookConsumer(
+      builder: (context, ref, Widget? child) {
+        final animation = ref.watch(mapAnimationProvider);
+
         return Positioned(
           top: topMargin(context) +
               (1 - animation.value) * (mainSquareSize(context) + 32 - 4),
